@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Excluindo linhas da tabela com JS</title>
+	<style>
+		body { 
+			background-color:#aaa;
+			font-family:Arial;
+			display:flex;
+			flex-direction:column;
+			justify-content:center;
+			align-items:center;
+		}
+		table, th, td {
+			border-width:2px;
+			border-style:solid;
+			border-color:#000;
+			padding:4px;
+			text-align:center;
+		}
+		td, th {
+			width:100px;
+		}
+		button {
+			background-color:#911;
+			color:#DDD;
+			border:0;
+			outline:0;
+			padding:5px 10px;
+			cursor:pointer;
+		}
+		.janela-exclusao {
+			display:none;
+			width:350px;
+			background-color:#A22;
+			padding:10px;
+			text-align:center;
+			font-size:18px;
+			color:#CCC;
+			box-shadow:0 0 20px #000;
+			position:absolute;
+			top:35%;
+			left:35%;
+		}
+		.janela-exclusao button {
+			width:100px;
+		}
+		.janela-exclusao button.excluir {
+			background-color:#008800;
+		}
+		.janela-exclusao button.cancelar {
+			background-color:#000077;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Excluindo linhas da tabela com JS</h1>
+
+	<table>
+		<thead>
+			<th>Aluno</th>
+			<th>Matemática</th>
+			<th>Português</th>
+			<th>Geografia</th>
+			<th>História</th>
+			<th>Excluir Registro</th>
+		</thead>
+
+		<tbody>
+			<tr class="linha1">
+				<td>Abelônio</td>
+				<td>4.5</td>
+				<td>6.7</td>
+				<td>6.9</td>
+				<td>5.9</td>
+				<td>
+					<button onclick="confirmar('linha1')" type="button">Excluir</button>
+				</td>
+			</tr>
+
+			<tr class="linha2">
+				<td>Cesar Iana</td>
+				<td>4.5</td>
+				<td>6.7</td>
+				<td>6.9</td>
+				<td>5.9</td>
+				<td>
+					<button onclick="confirmar('linha2')" type="button">Excluir</button>
+				</td>
+			</tr>
+
+			<tr class="linha3">
+				<td>Caca Ushow</td>
+				<td>4.5</td>
+				<td>6.7</td>
+				<td>6.9</td>
+				<td>5.9</td>
+				<td>
+					<button onclick="confirmar('linha3')" type="button">Excluir</button>
+				</td>
+			</tr>
+
+			<tr class="linha4">
+				<td>Dan Nado</td>
+				<td>4.5</td>
+				<td>6.7</td>
+				<td>6.9</td>
+				<td>5.9</td>
+				<td>
+					<button onclick="confirmar('linha4')" type="button">Excluir</button>
+				</td>
+			</tr>
+
+			<tr class="linha5">
+				<td>Vel Croaberto</td>
+				<td>4.5</td>
+				<td>6.7</td>
+				<td>6.9</td>
+				<td>5.9</td>
+				<td>
+					<button onclick="confirmar('linha5')" type="button">Excluir</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="janela-exclusao">
+		<p>
+			Tem certeza que quer excluir esse registro?
+		</p>
+		<button class="excluir" onclick="excluir()">Sim</button>
+		<button class="cancelar" onclick="confirmar()">Cancelar</button>
+	</div>
+
+	<script>
+		let janelaExclusao = document.querySelector('.janela-exclusao');
+		let linha = '';
+
+		function confirmar(classeLinha) {
+			linha = classeLinha;
+			if(janelaExclusao.style.display == 'block') {
+				janelaExclusao.style.display = 'none';
+			} else {
+				janelaExclusao.style.display = 'block';
+			}
+		}
+
+		function excluir() {
+			let linhaExcluir = document.querySelector(`.${linha}`);
+			linhaExcluir.remove();
+			confirmar();
+		}
+	</script>
+</body>
+</html>
